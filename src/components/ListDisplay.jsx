@@ -10,6 +10,10 @@ export const ListDisplay = (investmentInput) => {
     annualInvestment: annualInvestment, // investment added in this year
   };*/
 
+  let totalCapital = 0;
+  let totalInterest = 0;
+  let baseYear = 0;
+
   const thead = (
     <thead>
       <tr>
@@ -22,21 +26,32 @@ export const ListDisplay = (investmentInput) => {
     </thead>
   );
 
+function computeValuesAndReturnElement({year, interest, valueEndOfYear, annualInvestment}){
+  totalCapital += valueEndOfYear;
+  totalInterest += annualInvestment;
+  baseYear += year;
+
+  return (
+    <ListElement
+      key={baseYear}
+      year={baseYear}
+      investment_value={interest}
+      interest_year={valueEndOfYear}
+      total_interest={totalInterest}
+      total_capital={totalCapital}
+    />
+  )
+}
+
   return (
     <>
       <table id="result">
         {thead}
         <tbody>
-          {investmentInput.investmentInput.map((e) => (
-            <ListElement
-              key={e.year}
-              year={e.year}
-              investment_value={e.interest}
-              interest_year={e.valueEndOfYear}
-              total_interest={e.annualInvestment}
-              total_capital={e.annualInvestment}
-            />
-          ))}
+          {investmentInput.investmentInput.map((e) => {
+            console.log(e)
+            return computeValuesAndReturnElement(e)
+            })}
         </tbody>
       </table>
     </>

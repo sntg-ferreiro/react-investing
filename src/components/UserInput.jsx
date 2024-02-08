@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const UserInput = ({ placeholder, label, onNumberInput, field}) => {
+export const UserInput = ({ value, placeholder, label, onNumberInput, field}) => {
   //const [isEditing, setisEditing] = useState(false);
 
   const [number, setNumber] = useState(0);
@@ -13,7 +13,7 @@ export const UserInput = ({ placeholder, label, onNumberInput, field}) => {
   return (
     <p>
       <label>{label}</label>
-      <input required type="number" placeholder={placeholder} onChange={handleChange}/>
+      <input value={value} required type="number" placeholder={placeholder} onChange={handleChange}/>
     </p>
   );
 };

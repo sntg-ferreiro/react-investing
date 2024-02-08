@@ -15,7 +15,6 @@ export const UserInputs = ({ onNumberChange }) => {
 
   const onNumberInput = (field, newNumber) => {
     setInputState((prev) => {
-        console.log(prev)
       return { ...prev, [field]: newNumber }
     });
     onNumberChange(inputState);
@@ -29,12 +28,14 @@ export const UserInputs = ({ onNumberChange }) => {
           field="initialInvestment"
           placeholder={number}
           onNumberInput={onNumberInput}
+          value={inputState.initialInvestment}
         />
         <UserInput
           label="Annual Investment"
           field="annualInvestment"
           placeholder={number}
           onNumberInput={onNumberInput}
+          value={inputState.annualInvestment}
         />
       </div>
       <div className="input-group">
@@ -43,14 +44,17 @@ export const UserInputs = ({ onNumberChange }) => {
           field="expectedReturn"
           placeholder={number}
           onNumberInput={onNumberInput}
+          value={inputState.expectedReturn}
         />
         <UserInput
           label="Duration"
           field="duration"
           placeholder={number}
           onNumberInput={onNumberInput}
+          value={inputState.duration}
         />
       </div>
+      {/* <button>Calculate</button> */}
     </section>
   );
 };
