@@ -76,6 +76,7 @@ body {
 #result thead {
   font-size: 0.7rem;
   color: #83e6c0;
+  text-align: left;
 }
 
 #result tbody {
