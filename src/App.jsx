@@ -11,7 +11,7 @@ function App() {
     duration: 10,
   });
 
-  const isValidInput = 100 > inputState.duration >= 1;
+  const isValidInput = 100 > inputState.duration && inputState.duration >= 1;
 
   function handleChange(newValue, field) {
     setInputState((prev) => {
@@ -26,7 +26,7 @@ function App() {
       {isValidInput ? (
         <ListDisplay inputState={inputState} />
       ) : (
-        <p className="center">Please input a duration greater than Zero</p>
+        <p className="center">Pone bien los numerito, mono! entre 1 y 99 en duration</p>
       )}
     </>
   );
