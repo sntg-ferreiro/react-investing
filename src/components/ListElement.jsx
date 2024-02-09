@@ -9,9 +9,9 @@ export const ListElement = ({
   total_capital,
 }) => {
   return (
-    <tr key={`${year}-${total_capital}`}>
+    <tr>
       <td>{year}</td>
-      <td>{investment_value.size <10 && formatter.format(investment_value)}</td>
+      <td>{formatter.format(investment_value)}</td>
       <td>{formatter.format(interest_year)}</td>
       <td>{formatter.format(total_interest)}</td>
       <td>{formatter.format(total_capital)}</td>

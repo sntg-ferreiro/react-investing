@@ -2,22 +2,32 @@ import { useState } from "react";
 import { Header } from "./components/Header";
 import { ListDisplay } from "./components/ListDisplay";
 import { UserInputs } from "./components/UserInputs";
-import { calculateInvestmentResults } from "./util/investment.js";
 
 function App() {
+  const [inputState, setInputState] = useState({
+    initialInvestment: 10,
+    annualInvestment: 10,
+    expectedReturn: 10,
+    duration: 10,
+  });
 
-  const [annualData, setAnnualData] = useState([]);
+  const isValidInput = 100 > inputState.duration >= 1;
 
-  function onNumberChange(userInput) {
-    let result = calculateInvestmentResults(userInput);
-    setAnnualData((prev) => [...result, ...prev])
+  function handleChange(newValue, field) {
+    setInputState((prev) => {
+      return { ...prev, [field]: +newValue };
+    });
   }
 
   return (
     <>
       <Header />
-      <UserInputs onNumberChange={onNumberChange} />
-      <ListDisplay investmentInput={annualData} />
+      <UserInputs inputState={inputState} onChange={handleChange} />
+      {isValidInput ? (
+        <ListDisplay inputState={inputState} />
+      ) : (
+        <p className="center">Please input a duration greater than Zero</p>
+      )}
     </>
   );
 }

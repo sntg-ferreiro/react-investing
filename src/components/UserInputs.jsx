@@ -3,23 +3,7 @@ import { UserInput } from "./UserInput";
 
 const number = 0;
 
-const example = {
-  initialInvestment: 0,
-  annualInvestment: 0,
-  expectedReturn: 0,
-  duration: 0,
-};
-
-export const UserInputs = ({ onNumberChange }) => {
-  const [inputState, setInputState] = useState(example);
-
-  const onNumberInput = (field, newNumber) => {
-    setInputState((prev) => {
-      return { ...prev, [field]: newNumber }
-    });
-    onNumberChange(inputState);
-  };
-
+export const UserInputs = ({ inputState, onChange }) => {
   return (
     <section id="user-input">
       <div className="input-group">
@@ -27,14 +11,14 @@ export const UserInputs = ({ onNumberChange }) => {
           label="Initial Investement"
           field="initialInvestment"
           placeholder={number}
-          onNumberInput={onNumberInput}
+          onChange={onChange}
           value={inputState.initialInvestment}
         />
         <UserInput
           label="Annual Investment"
           field="annualInvestment"
           placeholder={number}
-          onNumberInput={onNumberInput}
+          onChange={onChange}
           value={inputState.annualInvestment}
         />
       </div>
@@ -43,14 +27,14 @@ export const UserInputs = ({ onNumberChange }) => {
           label="Expected Return"
           field="expectedReturn"
           placeholder={number}
-          onNumberInput={onNumberInput}
+          onChange={onChange}
           value={inputState.expectedReturn}
         />
         <UserInput
           label="Duration"
           field="duration"
           placeholder={number}
-          onNumberInput={onNumberInput}
+          onChange={onChange}
           value={inputState.duration}
         />
       </div>
